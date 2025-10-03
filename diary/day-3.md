@@ -1,4 +1,4 @@
-# Day 3 - Platoon leader
+# Platoon leader
 
 Now here's the thing, after collecting your NYSC
 uniform and registering, you are officially a corper so

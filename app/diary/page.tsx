@@ -11,6 +11,7 @@ interface DiaryEntry {
   title: string
   content: string
   day: number
+  displayLabel: string
 }
 
 export default function DiaryPage() {
@@ -74,16 +75,13 @@ export default function DiaryPage() {
           >
             <ArrowLeft className="w-6 h-6" />
           </Button>
-          <span className="text-white/60 text-sm font-mono" style={{ fontFamily: 'Consola, monospace' }}>
-            Day {currentIndex + 1} of {entries.length}
-          </span>
         </div>
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 pb-24">
           <div className="max-w-md mx-auto space-y-6">
             <p className="text-[#9acd32] text-xl text-center font-mono" style={{ fontFamily: 'Consola, monospace' }}>
-              Day {selectedEntry.day}
+              {selectedEntry.displayLabel === 'Preface' ? 'Preface' : `${selectedEntry.displayLabel} ${selectedEntry.day}`}
             </p>
 
             <h1 
@@ -190,7 +188,7 @@ export default function DiaryPage() {
                   className="w-full bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-6 transition-all text-left"
                 >
                   <p className="text-[#9acd32] text-sm font-mono mb-2" style={{ fontFamily: 'Consola, monospace' }}>
-                    Day {entry.day}
+                    {entry.displayLabel === 'Preface' ? 'Preface' : `${entry.displayLabel} ${entry.day}`}
                   </p>
                   <h2 
                     className="text-white text-2xl leading-tight" 

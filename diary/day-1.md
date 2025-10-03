@@ -1,4 +1,4 @@
-# Day 1 - "Hey, I have arrived"
+# "Hey, I have arrived"
 
 It was finally the 16th of February and this is the day I am to report to the NYSC camp.
 

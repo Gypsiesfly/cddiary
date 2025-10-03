@@ -15,16 +15,19 @@ export async function GET() {
     const files = fs.readdirSync(diaryDir)
       .filter(file => file.endsWith('.md') && !file.includes('README'))
       .sort((a, b) => {
-        // Custom sorting: day-0, chapter-1, day-1, day-2, etc.
+        // Custom sorting: preface, chapter-1, day-0, day-1, day-2, etc.
         const getSortOrder = (filename: string) => {
+          if (filename.match(/preface\.md/)) {
+            return -1 // Preface comes first
+          }
           const dayMatch = filename.match(/day-(-?\d+)\.md/)
           if (dayMatch) {
             return parseInt(dayMatch[1])
           }
           const chapterMatch = filename.match(/chapter-(\d+)\.md/)
           if (chapterMatch) {
-            // Chapters come after day-0 but before day-1
-            return parseInt(chapterMatch[1]) * 0.5
+            // Chapters come after preface but before day-0
+            return parseInt(chapterMatch[1]) * 0.5 - 0.5
           }
           return 999 // Other files go to the end
         }
@@ -43,11 +46,18 @@ export async function GET() {
       // Extract day or chapter number for display
       const dayMatch = file.match(/day-(-?\d+)\.md/)
       const chapterMatch = file.match(/chapter-(\d+)\.md/)
+      const prefaceMatch = file.match(/preface\.md/)
+      
       let day = 0
-      if (dayMatch) {
+      let displayLabel = 'Day'
+      
+      if (prefaceMatch) {
+        displayLabel = 'Preface'
+      } else if (dayMatch) {
         day = parseInt(dayMatch[1])
       } else if (chapterMatch) {
         day = parseInt(chapterMatch[1])
+        displayLabel = 'Chapter'
       }
 
       // Remove the title from content (first line with #)
@@ -57,7 +67,8 @@ export async function GET() {
         filename: file,
         title,
         content,
-        day
+        day,
+        displayLabel
       }
     })
 

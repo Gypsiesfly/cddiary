@@ -1,4 +1,4 @@
-# Day 2 - "Hey 1229"
+# "Hey 1229"
 
 So I picked a bed opposite the entrance door in case something was happening, it'd happen to the person at the entrance first and I'd notice it, roll from my top bunk bed unto the floor then under my bed to avoid it (courtesy of my boarding school experience).
 
