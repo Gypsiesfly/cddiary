@@ -1,4 +1,4 @@
-# Day 11: "A lovely day"
+# "A lovely day"
 
 In the words of Bill Withers, "Just one look at you and I know it's gonna be a lovely day." Today is going to be lovely.
 
